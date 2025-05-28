@@ -21,7 +21,6 @@ Dataset yang digunakan bernama `HR_comma_sep.csv` yang berisi data karyawan deng
 Pembersihan data dilakukan menggunakan SQL dengan pendekatan seperti:
 - Konversi format tanggal
 - Menstandarkan data (misal: mengganti 'Y' dan 'N' menjadi 'Yes' dan 'No')
-- Memecah kolom alamat (jika diperlukan)
 - Mengisi data null
 - Menghapus data duplikat
 
