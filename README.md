@@ -1,64 +1,77 @@
-# 📊 Employee Turnover Analysis
+# Analisis Attrition Karyawan
 
-Proyek ini bertujuan untuk menganalisis data karyawan dan menemukan pola yang berkaitan dengan turnover (karyawan keluar). Dataset ini mencakup informasi seperti kepuasan kerja, evaluasi performa, waktu kerja, dan departemen.
+**Proyek Portofolio Data Analyst**
 
-## 📁 Dataset
-Dataset yang digunakan bernama `HR_comma_sep.csv` yang berisi data karyawan dengan kolom seperti:
-- `satisfaction_level`
-- `last_evaluation`
-- `number_project`
-- `average_montly_hours`
-- `time_spend_company`
-- `Work_accident`
-- `left` (1 = keluar dari perusahaan)
-- `promotion_last_5years`
-- `sales` (departemen)
-- `salary`
+## Latar Belakang Masalah Bisnis
 
-## 🔧 Proses Pengerjaan
+Tingginya tingkat *turnover* atau *attrition* karyawan dapat menimbulkan dampak negatif signifikan bagi perusahaan, seperti peningkatan biaya rekrutmen dan pelatihan, penurunan produktivitas tim, serta hilangnya pengetahuan institusional. Proyek ini bertujuan untuk mengidentifikasi faktor-faktor kunci yang berkontribusi terhadap keputusan karyawan untuk keluar dari perusahaan, sehingga departemen Sumber Daya Manusia (SDM) dapat mengambil langkah-langkah proaktif untuk meningkatkan retensi.
 
-### 1. Data Cleaning (SQL)
-Pembersihan data dilakukan menggunakan SQL dengan pendekatan seperti:
-- Konversi format tanggal
-- Menstandarkan data (misal: mengganti 'Y' dan 'N' menjadi 'Yes' dan 'No')
-- Mengisi data null
-- Menghapus data duplikat
+## Tujuan Proyek
 
-### 2. Exploratory Data Analysis (Python)
-Analisis menggunakan Python dan visualisasi dengan `matplotlib` serta `seaborn`.
+* Mengidentifikasi variabel-variabel utama yang memiliki korelasi kuat dengan *attrition* karyawan.
+* Membandingkan karakteristik karyawan yang keluar dengan karyawan yang bertahan.
+* Memberikan *insight* berbasis data dan rekomendasi strategis untuk mengurangi tingkat *attrition* dan meningkatkan retensi karyawan.
 
-#### Contoh Analisis:
-- Korelasi antara `satisfaction_level` dan `left`
-- Perbandingan jam kerja dan performa
-- Turnover berdasarkan departemen
-- Hubungan promosi dan masa kerja
+## Dataset
 
-### 3. Visualisasi
-Beberapa visualisasi yang digunakan:
-- Heatmap korelasi
-- Boxplot masa kerja vs promosi
-- Barplot persentase turnover per departemen
+Dataset yang digunakan dalam proyek ini adalah `HR_comma_sep.csv`, yang berisi data anonim dari karyawan sebuah perusahaan, termasuk informasi mengenai:
+* `satisfaction_level`: Tingkat kepuasan karyawan (0-1)
+* `last_evaluation`: Penilaian performa terakhir (0-1)
+* `number_project`: Jumlah proyek yang dikerjakan
+* `average_monthly_hours`: Rata-rata jam kerja bulanan
+* `time_spend_company`: Lama waktu bekerja di perusahaan (tahun)
+* `work_accident`: Indikator kecelakaan kerja (0=Tidak, 1=Ya)
+* `left`: Variabel target, apakah karyawan keluar (1=Ya) atau bertahan (0=Tidak)
+* `promotion_last_5years`: Indikator promosi dalam 5 tahun terakhir (0=Tidak, 1=Ya)
+* `department`: Departemen kerja
+* `salary`: Tingkat gaji (low, medium, high)
 
-## 🛠 Tools & Library
-- Python (Pandas, Seaborn, Matplotlib)
-- SQL (Google BigQuery / MySQL)
-- Google Colab
-- Google Cloud Platform (BigQuery dataset & table)
+## Metodologi
 
-## 📄 Hasil Utama
-- Karyawan dengan kepuasan rendah lebih cenderung keluar.
-- Beberapa departemen memiliki tingkat turnover yang tinggi (misalnya: sales).
-- Karyawan yang tidak mendapatkan promosi dalam 5 tahun memiliki kecenderungan lebih tinggi untuk keluar.
+Proyek ini mengikuti alur analisis data standar:
 
-## 📌 Catatan Teknis
-- SQL cleaning disesuaikan agar dapat digunakan pada platform BigQuery dan MySQL.
+1.  **Pembersihan Data (Data Cleaning):** Mengidentifikasi dan menangani nilai yang hilang, duplikat, dan potensi *outlier* menggunakan SQL (di Google BigQuery/MySQL).
+2.  **Exploratory Data Analysis (EDA):** Menganalisis distribusi variabel, korelasi, dan membandingkan kelompok karyawan yang keluar vs. bertahan menggunakan statistik deskriptif dan visualisasi data dengan Python.
+3.  **Visualisasi Data:** Membuat grafik yang informatif dan menarik untuk mengkomunikasikan *insight* kunci.
+4.  **Analisis Mendalam & Rekomendasi:** Menarik kesimpulan berdasarkan data dan merumuskan rekomendasi strategis untuk departemen HR.
 
-## 📁 File Terkait
-- `HR_comma_sep.csv`: Dataset utama
-- `DataCleaning.sql`: langkah pembersihan data dengan SQL
-- `descriptive_statistic.ipynb`: Notebook analisis dan visualisasi
+## Tools & Teknologi yang Digunakan
 
-## 👨‍💻 Author
-Proyek ini dikerjakan sebagai bagian dari portofolio data analyst entry-level.
+* **Python:** Untuk analisis data, manipulasi, dan visualisasi.
+    * `pandas`: Manipulasi dan analisis data.
+    * `numpy`: Operasi numerik.
+    * `seaborn`: Visualisasi statistik.
+    * `matplotlib`: Plotting dasar.
+* **SQL (Google BigQuery/MySQL):** Untuk pembersihan data awal dan kueri data.
+* **Google Colab:** Lingkungan *notebook* berbasis *cloud* untuk pengembangan dan eksekusi kode Python.
+* **Google Cloud Platform:** Platform komputasi *cloud* yang digunakan untuk SQL.
 
+## Insight & Temuan Kunci
 
+Berdasarkan analisis data, beberapa temuan kunci yang berkontribusi terhadap *attrition* karyawan meliputi:
+
+* **Tingkat Kepuasan Rendah:** Karyawan dengan **tingkat kepuasan di bawah 0.4** memiliki kemungkinan tinggi untuk keluar.
+* **Penilaian Kinerja dan Beban Kerja:**
+    * Karyawan dengan **penilaian kinerja sangat rendah (<0.5)** namun **jumlah proyek dan jam kerja rendah** cenderung keluar (mungkin karena performa buruk).
+    * Karyawan dengan **penilaian kinerja sangat tinggi (>0.8)** namun **jumlah proyek dan jam kerja sangat tinggi** (overworked) juga cenderung keluar, terlepas dari kepuasan.
+* **Gaji:** Karyawan dengan **gaji 'low'** memiliki tingkat *attrition* yang jauh lebih tinggi dibandingkan dengan gaji 'medium' atau 'high'.
+* **Departemen:** Departemen **'sales'**, **'technical'**, dan **'support'** menunjukkan tingkat *attrition* yang relatif lebih tinggi.
+* **Kurangnya Promosi:** Karyawan yang **belum mendapatkan promosi dalam 5 tahun terakhir** memiliki kemungkinan lebih besar untuk *resign*.
+
+## Rekomendasi Bisnis
+
+Berdasarkan *insight* di atas, berikut adalah rekomendasi *actionable* untuk meningkatkan retensi karyawan:
+
+1.  **Fokus pada Peningkatan Kepuasan Karyawan:** Lakukan survei kepuasan yang lebih mendalam dan inisiatif untuk meningkatkan moral serta kepuasan kerja, terutama bagi karyawan dengan tingkat kepuasan di bawah ambang batas (misalnya, <0.4).
+2.  **Optimasi Beban Kerja & Penilaian Kinerja:**
+    * Identifikasi dan berikan dukungan bagi karyawan dengan *low performance* melalui pelatihan atau penyesuaian peran.
+    * Lakukan evaluasi ulang beban kerja bagi karyawan berkinerja tinggi yang mengalami *overwork* (misalnya, jam kerja di atas 250 jam/bulan atau lebih dari 5 proyek). Pertimbangkan alokasi sumber daya tambahan atau insentif.
+3.  **Tinjau Struktur Gaji:** Pertimbangkan untuk meninjau dan menyesuaikan struktur gaji, terutama di level 'low', untuk memastikan kompensasi yang kompetitif dan mengurangi risiko *attrition* berbasis gaji.
+4.  **Perhatian Khusus pada Departemen Berisiko Tinggi:** Lakukan analisis lebih lanjut dan implementasikan program retensi yang ditargetkan di departemen seperti *sales*, *technical*, dan *support*.
+5.  **Perencanaan Jalur Karir & Promosi:** Pastikan karyawan memiliki jalur karir yang jelas dan peluang promosi yang adil. Berikan *feedback* dan rencana pengembangan bagi mereka yang belum dipromosikan dalam waktu lama.
+
+## Navigasi Repository
+
+* `HR_comma_sep.csv`: Dataset asli yang digunakan untuk analisis.
+* `DataCleaning.sql`: Skrip SQL untuk langkah-langkah pembersihan data awal.
+* `descriptive_statistic.ipynb`: Jupyter Notebook yang berisi seluruh proses analisis data, visualisasi, dan kesimpulan.
