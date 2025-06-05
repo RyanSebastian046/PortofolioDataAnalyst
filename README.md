@@ -74,4 +74,4 @@ Berdasarkan *insight* di atas, berikut adalah rekomendasi *actionable* untuk men
 
 * `HR_comma_sep.csv`: Dataset asli yang digunakan untuk analisis.
 * `DataCleaning.sql`: Skrip SQL untuk langkah-langkah pembersihan data awal.
-* `descriptive_statistic.ipynb`: Jupyter Notebook yang berisi seluruh proses analisis data, visualisasi, dan kesimpulan.
+* `Employee_Attrition_Analysis_Portfolio.ipynb`: Jupyter Notebook yang berisi seluruh proses analisis data, visualisasi, dan kesimpulan.
